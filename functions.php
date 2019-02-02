@@ -9,3 +9,9 @@ spl_autoload_register(function($class){
         require $path;
     }
 });
+
+function print_pre($arr){
+    echo '<pre>';
+    print_r($arr);
+    echo '</pre>';
+}
