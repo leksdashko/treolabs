@@ -1,6 +1,7 @@
 <?php
 
 namespace app\core;
+use app\core\View;
 
 /**
  *  Class for handle site routes
@@ -9,7 +10,6 @@ namespace app\core;
  */
 class Router
 {
-    
     private $routes = [];
     private $params = [];
     
@@ -51,19 +51,25 @@ class Router
     }
     
     /**
-     *  Determine the controller and action for page
+     * Determine the controller and action for page
      */
     public function run()
     {
         if($this->match()){
-            $controller = 'app\controllers\\' . ucfirst($this->params['controller']) . 'Controller.php';
-            if(class_exists($controller)){
-                echo 'Ok';
+            $path = 'app\controllers\\' . ucfirst($this->params['controller']) . 'Controller';
+            if(class_exists($path)){
+                $action = $this->params['action']  . 'Action';
+                if(method_exists($path, $action)){
+                    $controller = new $path($this->params);
+                    $controller->$action();
+                }else{
+                    View::errorCode(404);
+                }
             }else{
-                echo 'Controller not found  - ' . $controller;
+                View::errorCode(404);
             }
         }else{
-            echo 'Route not found';
+            View::errorCode(404);
         }
     }
     
