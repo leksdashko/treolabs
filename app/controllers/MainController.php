@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\core\Controller;
-use app\lib\Db;
 
 /**
  * Controller for main page, category list
@@ -13,11 +12,9 @@ use app\lib\Db;
 class MainController extends Controller
 {
     public function indexAction()
-    {
-        $db = new Db;
-        $data = $db->row('SELECT categories_id FROM categories', []);
-        print_pre($data);
-        $this->view->render('index');
+    { 
+        $cats = $this->model->getCategories();
+        $this->view->render('index', compact('cats'));
     }
     
 }

@@ -1,3 +1,3 @@
 <?php 
 
-echo 'index';
+print_pre($cats);
