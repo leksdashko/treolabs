@@ -6,6 +6,7 @@
 </head>
 <body>
     
+    <?= (new \app\components\menu\Menu('menulist'))->run()?>
     <?= $content ?>
 	
 </body>

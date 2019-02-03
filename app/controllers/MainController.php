@@ -13,8 +13,7 @@ class MainController extends Controller
 {
     public function indexAction()
     { 
-        $cats = $this->model->getCategories();
-        $this->view->render('index', compact('cats'));
+        $this->view->render('index');
     }
     
 }

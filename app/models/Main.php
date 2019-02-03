@@ -11,9 +11,6 @@ use app\core\Model;
  */
 class Main extends Model{
     
-    public function getCategories(){
-        $data = $this->Db->row('SELECT categories_id FROM categories');
-        return $data;
-    }
+    
     
 }
