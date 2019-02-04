@@ -1,3 +1,1 @@
-<?php 
-
-print_pre($cats);
+<div id="product-list">Products</div>
