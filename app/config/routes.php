@@ -6,8 +6,8 @@ return [
         'action' => 'index'
     ],
     
-    'category/all' => [
+    'category' => [
         'controller' => 'category',
-        'action' => 'all'
+        'action' => 'index'
     ]
 ];

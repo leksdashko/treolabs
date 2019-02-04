@@ -38,6 +38,25 @@ class View
             echo 'View not found';
         }
     }
+    
+    /**
+     * Require suitable view template, by ajax
+     * 
+     * @param type $title
+     * @param type $vars
+     */
+    public function renderAjax($vars = [])
+    {
+        $path = 'app/views/' . $this->path . '.php';
+        if(file_exists($path)){
+            ob_start();
+            extract($vars);
+            ob_get_clean();
+            require $path;
+        }else{
+            echo 'View not found';
+        }
+    }
 
     /**
      * Require error template
