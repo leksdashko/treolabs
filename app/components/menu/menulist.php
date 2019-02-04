@@ -1,9 +1,13 @@
 <li>
-    <a href="#">
+    <a href="#" data-id="<?= $category['categories_id'] ?>">
         <?= 'Category - ' . $category['categories_id']?>
         <?php if( isset($category['childs']) ): ?>
             (*)
         <?php endif;?>
+        
+        <?php if($category['count_goods']){
+            echo '[Goods - ' . $category['count_goods'] . ']';
+        } ?>
     </a>
     <?php if( isset($category['childs']) ): ?>
         <ul>

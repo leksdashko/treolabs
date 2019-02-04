@@ -11,6 +11,9 @@ use app\core\Controller;
  */
 class MainController extends Controller
 {
+    /**
+     * Index action for handle index page
+     */
     public function indexAction()
     { 
         $this->view->render('index');

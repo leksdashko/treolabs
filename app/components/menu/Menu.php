@@ -5,7 +5,7 @@ namespace app\components\menu;
 use app\lib\Db;
 
 /**
- * Description of menu
+ * Menu widget
  *
  * @author Alexander Dashko <leksdashko@gmail.com>
  */
@@ -20,13 +20,29 @@ class Menu {
         $this->db = new Db();
     }
     
+    /**
+     * Get menu html structure
+     * 
+     * @return type
+     */
     public function run(){
-        $categories = $this->db->row('SELECT * FROM categories ORDER BY categories_id');
+        $sql = 'SELECT c.categories_id AS categories_id, c.parent_id AS parent_id, count(*) AS count_goods
+                FROM products_to_categories AS p 
+                INNER JOIN categories c ON p.categories_id = c.categories_id 
+                GROUP BY p.categories_id 
+                ORDER BY c.categories_id';
+        $categories = $this->db->query($sql)->fetchAll();
         $this->tree = $this->getTree($this->sortAsUniq($categories));
         $menuHtml = $this->getMenuHtml($this->tree);
         return $menuHtml;
     }
     
+    /**
+     * Create tree from category list
+     * 
+     * @param type $data
+     * @return type
+     */
     private function getTree($data){
         $tree = [];
         foreach ($data as $id => &$node) {
