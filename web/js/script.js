@@ -1,5 +1,5 @@
 
-function loadProducts(categoryId) {
+function loadCategory(id) {
     event.preventDefault();
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
@@ -7,7 +7,7 @@ function loadProducts(categoryId) {
             document.getElementById("product-list").innerHTML = this.responseText;
         }
     };
-    xhttp.open("POST", "products", true);
+    xhttp.open("POST", "category", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("category_id=" + categoryId);
+    xhttp.send("id=" + id);
 }

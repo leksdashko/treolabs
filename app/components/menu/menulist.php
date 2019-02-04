@@ -1,5 +1,5 @@
 <li>
-    <a href="#" onclick="loadProducts(<?= $category['categories_id'] ?>)">
+    <a href="#" onclick="loadCategory(<?= $category['categories_id'] ?>)">
         <?= 'Category - ' . $category['categories_id']?>
         <?php if( isset($category['childs']) ): ?>
             (*)
