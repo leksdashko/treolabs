@@ -6,8 +6,10 @@
 </head>
 <body>
     
-    <?= (new \app\components\menu\Menu('menulist'))->run()?>
     <?= $content ?>
+    <?= (new \app\components\menu\Menu('menulist'))->run()?>
+    
+    <script src="web/js/script.js"></script>
 	
 </body>
 </html>
